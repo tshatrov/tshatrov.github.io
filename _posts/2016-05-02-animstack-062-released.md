@@ -1,5 +1,6 @@
 ---
 layout: post
+title: "AnimStack 0.62 released"
 tags: ["animstack", "gimp", "script-fu"]
 ---
 
