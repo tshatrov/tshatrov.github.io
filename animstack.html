@@ -21,6 +21,7 @@ tags: ["animstack", "script-fu", "gimp"]
 <p>
 
 <ul>
+  <li><strong>Aug 4, 2019 - AnimStack 0.63 is a bugfix release, fixing a motion blur bug</strong>
   <li><strong>May 2, 2016 - AnimStack 0.62 is a bugfix release, fixing Unicode handling</strong>
   <li><strong>May 19, 2013 - AnimStack 0.61 is a bugfix release, fixing very stupid bug with [render]</strong>
   <li><strong>April 17, 2013 - AnimStack 0.6 is released! See release notes in the comment section.</strong>
@@ -100,7 +101,7 @@ Generator tags allow to introduce variables to be used by effect tags. The synta
 </p>
 <h4 id="sec-3.1.5">Effect tags </h4>
 <p>
-Effect tags have the most complicated syntax. First off, the tag's identifier must start with one of three symbols: "!", "-", "+". If the tag starts with "!", it's considered an "initial" effect, otherwise it's a "runtime" effect. Syntax for an initial effect is as follows: "[!<em>effect</em>:<em>param1</em>:…]". Syntax for a runtime effect is as follows: "[&lt;-/+&gt;<em>range</em>;<em>effect</em>:<em>param1</em>:…]". Range can be omitted (and usually is). Parameters must be numbers; in case of runtime effects, variables introduced by generator tags on the same layer are also allowed, and (new in 0.6) you can also add arithmetic adjustments to them (see generator tags). 
+Effect tags have the most complicated syntax. First off, the tag's identifier must start with one of three symbols: "!", "-", "+". If the tag starts with "!", it's considered an "initial" effect, otherwise it's a "runtime" effect. Syntax for an initial effect is as follows: "[!<em>effect</em>:<em>param1</em>:…]". Syntax for a runtime effect is as follows: "[&lt;-/+&gt;<em>range</em>;<em>effect</em>:<em>param1</em>:…]". Range can be omitted (and usually is). Parameters must be numbers; in case of runtime effects, variables introduced by generator tags on the same layer are also allowed, and (new in 0.6) you can also add arithmetic adjustments to them (see generator tags).
 </p>
 <p>
 The following are examples of valid effect tags: "[!scale:0.5]", "[-scale:x]", "[+move:10:5+-2*y]" (use generator assigned to variable <em>y</em>, multiply it by -2 and add 5).
@@ -157,7 +158,7 @@ Examples of valid ranges:
 <p>
   The layers are processed top to bottom. At the first stage all multiply and label tags are processed. If a layer is encountered that has a multiply tag, it is duplicated the required amount of times. The original layer is deleted. If a layer has several multiply tags, only the first one is processed.</p>
 <p>
-(new in 0.6) A layer can have several label tags attached to it. They are processed and removed at this stage, but AnimStack remembers which layers had which labels until the end of the entire process. If a layer is later converted into a layer group, the label is transferred to the layer group, but aside from that, label assignments do not change. 
+(new in 0.6) A layer can have several label tags attached to it. They are processed and removed at this stage, but AnimStack remembers which layers had which labels until the end of the entire process. If a layer is later converted into a layer group, the label is transferred to the layer group, but aside from that, label assignments do not change.
 </p>
 <p>
 Once all the multiply and label tags have been processed, we start from top to bottom again. Once a layer with an action tag is encountered, things start to get interesting. First off, only the first action tag actually does anything, all subsequent ones are ignored. The layer might also have several generator and effect tags attached to it. As of version 0.3, if there's a runtime effect tag present, but no action tag, "[noop]" action tag is assumed.
@@ -198,7 +199,7 @@ All parameters are optional. You can omit any parameters from the end. As of Ani
 <strong>splice</strong>:<em>position</em>:<em>roll-offset</em> - a less general version of <strong>roll</strong>, it sets <strong>roll</strong>'s <em>limit</em> to the number of sublayers in a tagged layer group. This means every sublayer is inserted at most once. It is useful for inserting a non-looped animation.
 </li>
 <li>
-<strong>noop</strong>:<em>limit</em> or <strong>no</strong>:<em>limit</em> - this action works like <strong>bg</strong>, except it doesn't actually place the source layer anywhere. It is only useful for effects that affect the target layer, such as the "delay" effect. 
+<strong>noop</strong>:<em>limit</em> or <strong>no</strong>:<em>limit</em> - this action works like <strong>bg</strong>, except it doesn't actually place the source layer anywhere. It is only useful for effects that affect the target layer, such as the "delay" effect.
 </li>
 <li>
   <strong>matte</strong>:<em>threshold</em>:<em>limit</em> - applies matte effect to preserve partial transparency in GIF files. Works similar to <strong>bg</strong>, except when the target frame has a pixel with transparency value less than <em>threshold</em> (1 by default), this pixel is removed from the copy of the source layer. See <a href="http://youtu.be/49FGgONSduM">http://youtu.be/49FGgONSduM</a> for example.
@@ -350,7 +351,7 @@ One of possible tag arguments is position within frame. It is an integer number 
 </li>
 <li>
   <strong>drotate</strong>:<em>x</em>:<em>y</em>:<em>ix</em>:<em>iy</em>:<em>nocrop</em> - like <strong>rotate</strong>, but the angle is calculated as arctan(<em>iy</em>/<em>ix</em>)-arctan(<em>y</em>/<em>x</em>). It's the angle by which the vector (<em>ix</em>, <em>iy</em>) must be rotated to point in the same direction as (<em>x</em>, <em>y</em>). By default <em>ix</em> is 0 and <em>iy</em> is -1, which corresponds to object pointing upwards. If <em>x</em> and <em>y</em> are derivatives of the object's position, then "[drotate:x:y]" will rotate the object towards the direction of its movement.
-</li>  
+</li>
 <li>
   <strong>seed</strong>:<em>n</em> - sets random number generator seed to <em>n</em>. This can be used to ensure random effects like <strong>scatter</strong> and <strong>offset</strong> behave identically for two different layers. The results of generators <strong>rng</strong> and <strong>irng</strong> are also affected.
 </li>
