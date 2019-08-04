@@ -1,7 +1,7 @@
 ---
 layout: page
 title: tshatrov's github pages
-tagline: 
+tagline:
 ---
 {% include JB/setup %}
 
@@ -15,7 +15,7 @@ Repository: [tshatrov/ichiran](https://github.com/tshatrov/ichiran)
 
 Repository: [tshatrov/scriptfu](https://github.com/tshatrov/scriptfu)
 
-* [AnimStack](/animstack.html) *latest update: 0.62 (May 2, 2016)*
+* [AnimStack](/animstack.html) *latest update: 0.63 (Aug 4, 2019)*
 * to be continued...
 
 ## Posts
@@ -25,6 +25,3 @@ Repository: [tshatrov/scriptfu](https://github.com/tshatrov/scriptfu)
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
-
-
-
