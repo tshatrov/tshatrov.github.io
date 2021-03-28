@@ -15,7 +15,7 @@ Repository: [tshatrov/ichiran](https://github.com/tshatrov/ichiran)
 
 Repository: [tshatrov/scriptfu](https://github.com/tshatrov/scriptfu)
 
-* [AnimStack](/animstack.html) *latest update: 0.63 (Aug 4, 2019)*
+* [AnimStack](/animstack.html) *latest update: 0.64 (Mar 28, 2021)*
 * to be continued...
 
 ## Posts
